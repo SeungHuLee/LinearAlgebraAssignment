@@ -36,7 +36,7 @@ int main() {
 
 	int sentry = 0;
 	int option = 0;
-	int *temp = new int[n];
+	int *temp = new int[n]; // Çà ±³È¯¿¡ »ç¿ëÇÏ´Â temp µ¿Àû¹è¿­
 
 	while (sentry != -1) {
 		cout << "\nWhat operation do you want to perform with your matrix?" << endl;
@@ -54,8 +54,6 @@ int main() {
 			int chosenPlace;
 			int chosenRowToExchange;
 			
-			
-
 			cout << "You chose exchange." << endl;
 			cout << "Choose row to exchange (0 ~ ): ";
 			cin >> chosenRowToExchange;
@@ -78,10 +76,21 @@ int main() {
 				cout << endl;
 			} // Ãâ·Â
 
-			
 			break;
-		case 2: // (Çà °ö¼À)
-			cout << "2" << endl;
+		case 2: // (Çà °ö¼À) 
+			int chosenRowToMultiply;
+			int givenValue;
+
+			cout << "You chose multiplication." << endl;
+			cout << "Choose row to multiply (0 ~ ): ";
+			cin >> chosenRowToMultiply;
+			cout << "How much? : ";
+			cin >> givenValue;
+
+			for (int i = 0; i < n; i++) {
+				matrix[chosenRowToMultiply][i] *= givenValue;
+			}
+
 			break;
 		case 3: // (Çà µ¡¼À)
 			cout << "3" << endl;
