@@ -1,18 +1,16 @@
 #include <iostream>
-#include <cstdlib>
-#include <iomanip>
 
 using namespace std;
 
 int m = 0;
 int n = 0;
 
-void printMatrix(float** matrix);
+void PrintMatrix(float** matrix);
 void RowReduce(float** matrix);
 
 int main()
 {
-	cout << "How many rows and columns does the matrix have? (m * n) : "; // m행 n열
+	cout << "행과 열을 설정하세요 (m * n) : "; // m행 n열
 	cin >> m >> n;
 
 	float **matrix = new float*[m];
@@ -32,34 +30,14 @@ int main()
 		cout << endl;
 	}
 
-
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << matrix[i][j] << " ";
 		}
 		cout << endl;
 	}
-	//output();
-	/*int tempCount = 0; // for debugging
-
-	for (int i = 0; i < m; i++) {                                            // mat[0][0] mat[0][1]
-		for (int j = 0; j < n; j++) {                                        // mat[1][0] mat[1][1]
-			matrix[i][j] = tempCount++;
-			cout << matrix[i][j] << " "; // j가 열이고, i가 행을 나타낸다. 
-
-		}
-		cout << endl;
-	} // 출력*/
-
 	
-	
-	/*float A[3][4] = { {5, -6, -7,   7},
-					 {3, -2,  5, -17},
-					 {2,  4, -3,  29} }; //answer should be {2, 4, -3}  주어진 행렬이다.*/
-
-
-
-	printMatrix(matrix);
+	PrintMatrix(matrix);
 	RowReduce(matrix);
 
 	for (int i = 0; i < m; i++) { // 해제
@@ -69,11 +47,11 @@ int main()
 	delete[] temp;
 }
 
-void printMatrix(float** matrix) // Outputs the matrix
+void PrintMatrix(float** matrix) // 행렬 프린트
 {
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
-			cout << setw(7) << setprecision(4) << matrix[i][j] << " ";
+			cout << matrix[i][j] << " ";
 		}
 		cout << endl;
 	}
@@ -83,9 +61,6 @@ void printMatrix(float** matrix) // Outputs the matrix
 
 void RowReduce(float** matrix)
 {
-	//const int nrows = 3; // number of rows
-	//const int ncols = 4; // number of columns
-
 	int lead = 0;
 
 	while (lead < m) {
@@ -102,9 +77,9 @@ void RowReduce(float** matrix)
 				else
 					matrix[r][c] -= matrix[lead][c] * multiplier;  // make other = 0
 			}
-		}
+		} // while end
 
 		lead++;
-		printMatrix(matrix);
+		PrintMatrix(matrix);
 	}
 }
