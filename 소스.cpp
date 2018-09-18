@@ -1,32 +1,44 @@
 #include <iostream>
 #include <array>
+
 using namespace std;
-array<array<int, 7>, 7> row;
 
-void input() {
-	array<int, 7> temp;
-	cout << "Input your coefficient matrix : " << endl;
-	cin >> temp[0] >> temp[1] >> temp[2] >> temp[3] >> temp[4] >> temp[5] >> temp[6];
+int m = 0;
+int n = 0;
 
-	// 일단 첫째 row부터 입력받은 값으로 채워넣어 보자. 7x7 행렬이다.
-	for (int i = 0; i < 1; i++) {
-		row[i] = temp;
-	}
+void output();
+
+int main() {
+	
+	int count = 0;
+
+	cout << "How many rows and columns does the matrix have? (m * n) : ";
+	cin >> m >> n;
+
+	int **matrix = new int*[n];
+
+	for (int i = 0; i < n; i++) {
+		matrix[i] = new int[m];
+		memset(matrix[i], 0, sizeof(int)*m);
+	} // 동적할당
+
+	//output();
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+	} // 출력
+
+	for (int i = 0; i < m; i++) { 
+		delete[] matrix[i]; 
+	} 
+	delete[] matrix;
 
 }
 
-int main() {
-	input();
-	int count = 0;
-
-	for (auto& column : row) {
-		
-		for (auto& element : column) {
-			
-			
-			cout << element << " ";
-		}
-		cout << endl;
-	}
-	//cout << row[0][0] << row[0][1] << endl;
+void output(int** arr) { // Reduced row echelon form 구하기
+	
+	
 }
