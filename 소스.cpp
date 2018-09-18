@@ -6,7 +6,11 @@ using namespace std;
 int m = 0;
 int n = 0;
 
-void output();
+void exchange();
+void multiply();
+void add();
+void subtract();
+void showRowEchelonForm(int** arr);
 
 int main() {
 	
@@ -69,6 +73,10 @@ int main() {
 				matrix[chosenRowToExchange][i] = temp[i];
 			}
 
+			for (int i = 0; i < n; i++) {
+				temp[i] = 0; // temp[] 초기화
+			}
+
 			for (int i = 0; i < m; i++) {                                            // mat[0][0] mat[0][1]
 				for (int j = 0; j < n; j++) {                                        // mat[1][0] mat[1][1]
 					cout << matrix[i][j] << " "; // j가 열이고, i가 행을 나타낸다. 
@@ -88,15 +96,62 @@ int main() {
 			cin >> givenValue;
 
 			for (int i = 0; i < n; i++) {
-				matrix[chosenRowToMultiply][i] *= givenValue;
+				matrix[chosenRowToMultiply][i] *= givenValue; // 행 곱연산
 			}
 
+			for (int i = 0; i < m; i++) {                                            // mat[0][0] mat[0][1]
+				for (int j = 0; j < n; j++) {                                        // mat[1][0] mat[1][1]
+					cout << matrix[i][j] << " "; // j가 열이고, i가 행을 나타낸다. 
+				}
+				cout << endl;
+			} // 출력
+			// 무엇을 기준으로 곱셈을 실행할 것인가? - pivot?
 			break;
 		case 3: // (행 덧셈)
-			cout << "3" << endl;
+			int chosenRowToAdd;
+			int chosenStdRowAdd;
+
+			cout << "You chose addition." << endl; // R2 = R1 + R2. R2가 StandardRow
+			cout << "Choose a standard row (0 ~ ): ";
+			cin >> chosenStdRowAdd;
+			cout << "Choose a row to be added to standard row : ";
+			cin >> chosenRowToAdd;
+
+			for (int i = 0; i < n; i++) {
+				matrix[chosenStdRowAdd][i] += matrix[chosenRowToAdd][i];
+				
+			}
+
+			for (int i = 0; i < m; i++) {                                            // mat[0][0] mat[0][1]
+				for (int j = 0; j < n; j++) {                                        // mat[1][0] mat[1][1]
+					cout << matrix[i][j] << " "; // j가 열이고, i가 행을 나타낸다. 
+				}
+				cout << endl;
+			} // 출력
+
 			break;
 		case 4: // (행 뺄셈)
-			cout << "4" << endl;
+			int chosenRowToSubtract;
+			int chosenStdRowSubtract;
+
+			cout << "You chose subtraction." << endl; // R2 = R1 - R2. R2가 StandardRow
+			cout << "Choose a standard row (0 ~ ): ";
+			cin >> chosenStdRowSubtract;
+			cout << "Choose a row to be subtracted to standard row : ";
+			cin >> chosenRowToSubtract;
+
+			for (int i = 0; i < n; i++) {
+				matrix[chosenStdRowSubtract][i] -= matrix[chosenRowToSubtract][i];
+
+			}
+
+			for (int i = 0; i < m; i++) {                                            // mat[0][0] mat[0][1]
+				for (int j = 0; j < n; j++) {                                        // mat[1][0] mat[1][1]
+					cout << matrix[i][j] << " "; // j가 열이고, i가 행을 나타낸다. 
+				}
+				cout << endl;
+			} // 출력
+
 			break;
 		default:
 			break;
@@ -110,7 +165,6 @@ int main() {
 	delete[] temp;
 }
 
-void output(int** arr) { // Reduced row echelon form 구하기 행 교환(완료), 행 곱셈, 행 더하기, 행 빼기
-	
+void showRowEchelonForm(int** arr) { // Reduced row echelon form 구하기 행 교환(완료), 행 곱셈(완료), 행 더하기, 행 빼기, pivot 설정
 	
 }
