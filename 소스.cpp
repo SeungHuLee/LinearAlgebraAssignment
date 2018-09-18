@@ -20,7 +20,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		matrix[i] = new int[m];
 		memset(matrix[i], 0, sizeof(int)*m);
-	} // 동적할당
+	} // 2차원 동적 배열 메모리 할당
 
 	//output();
 
@@ -31,14 +31,46 @@ int main() {
 		cout << endl;
 	} // 출력
 
-	for (int i = 0; i < m; i++) { 
+	int sentry = 0;
+	int option = 0;
+
+	while (sentry != -1) {
+		cout << "What operation do you want to perform with your matrix?" << endl;
+		cout << "Choose your option : " << endl;
+		cout << "(-1 - exit 1 - exchange row 2 - multiply coefficients 3 - addition of rows 4 - subtraction of rows) : ";
+
+		cin >> option;
+
+		switch (option)
+		{
+		case -1:
+			sentry = -1;
+			break;
+		case 1:
+			cout << "1" << endl;
+			break;
+		case 2:
+			cout << "2" << endl;
+			break;
+		case 3:
+			cout << "3" << endl;
+			break;
+		case 4:
+			cout << "4" << endl;
+			break;
+		default:
+			break;
+		}
+	}
+
+	for (int i = 0; i < m; i++) { // 해제
 		delete[] matrix[i]; 
 	} 
 	delete[] matrix;
 
 }
 
-void output(int** arr) { // Reduced row echelon form 구하기
+void output(int** arr) { // Reduced row echelon form 구하기 행 교환, 행 곱셈, 행 더하기, 행 빼기
 	
 	
 }
